@@ -5,6 +5,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="Back End" />
+          <element id="module-output" name="Front_End" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="json-p" />
@@ -12,6 +13,7 @@
           <element id="library" level="application_server_libraries" name="Tomcat 8.5.90" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="Back End/web/Web" />
     </root>
   </artifact>
 </component>
