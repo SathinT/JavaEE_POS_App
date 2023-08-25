@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="json-p">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../1st Sem/ijse/intellij/Lib/json-p" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../1st Sem/ijse/intellij/Lib/json-p" recursive="false" />
+  </library>
+</component>
