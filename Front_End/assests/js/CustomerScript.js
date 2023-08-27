@@ -1,4 +1,5 @@
 getAllCustomers();
+bindRowClickEvents();
 
 $("#btnGetAll").click(function () {
     getAllCustomers();
@@ -20,12 +21,36 @@ function getAllCustomers() {
                 let row = `<tr><td>${id}</td><td>${name}</td><td>${address}</td></tr>`;
                 $("#tblCustomer").append(row);
             }
+            setTextFields("","","");
         },
         error: function (error) {
             alert(error.responseJSON.message);
+            setTextFields("","","");
         }
     });
 }
+
+// bind table row values to text field on click
+function bindRowClickEvents() {
+    $('#tblCustomer').on('click', 'tr', function () {
+        let id = $(this).find('td:eq(0)').text();
+        let name = $(this).find('td:eq(1)').text();
+        let address = $(this).find('td:eq(2)').text();
+
+        setTextFields(id,name,address);
+    });
+}
+
+// set text fields
+function setTextFields(id,name,address) {
+    $('#txtCustomerID').val(id);
+    $('#txtCustomerName').val(name);
+    $('#txtCustomerAddress').val(address);
+}
+
+$("#btnClear").click(function () {
+    setTextFields("","","");
+});
 
 // add
 $("#btnCustomer").click(function () {

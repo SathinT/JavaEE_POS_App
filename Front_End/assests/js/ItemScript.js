@@ -1,4 +1,5 @@
 getAllItems();
+bindRowClickEvents()
 
 $("#btnGetAllItems").click(function () {
     getAllItems();
@@ -15,18 +16,44 @@ function getAllItems() {
             for (let i in items) {
                 let item = items[i];
                 let code = item.code;
-                let description = item.itemName;
+                let name = item.itemName;
                 let qtyOnHand = item.qty;
                 let unitPrice = item.unitPrice;
-                let row = `<tr><td>${code}</td><td>${description}</td><td>${qtyOnHand}</td><td>${unitPrice}</td></tr>`;
+                let row = `<tr><td>${code}</td><td>${name}</td><td>${qtyOnHand}</td><td>${unitPrice}</td></tr>`;
                 $("#tblItem").append(row);
             }
+            setTextFields("","","","");
         },
         error: function (error) {
             alert(error.responseJSON.message);
+            setTextFields("","","","");
         }
     });
 }
+
+// bind table row values to text field on click
+function bindRowClickEvents() {
+    $('#tblItem').on('click', 'tr', function () {
+        let code = $(this).find('td:eq(0)').text();
+        let name = $(this).find('td:eq(1)').text();
+        let qtyOnHand = $(this).find('td:eq(2)').text();
+        let unitPrice = $(this).find('td:eq(2)').text();
+
+        setTextFields(code,name,qtyOnHand,unitPrice);
+    });
+}
+
+// set text fields
+function setTextFields(code,name,qtyOnHand,unitPrice) {
+    $('#itemCode').val(code);
+    $('#itemName').val(name);
+    $('#itemQty').val(qtyOnHand);
+    $('#itemPrice').val(unitPrice);
+}
+
+$("#btnClear").click(function () {
+    setTextFields("","","","");
+});
 
 // add
 $("#btnItem").click(function () {
